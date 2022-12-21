@@ -1,0 +1,46 @@
+
+<%- include('./includes/header.ejs', {css}) %>
+  
+  <body class="container">
+    <nav> FORZA NAPOLI</nav>
+   
+    <main class="content">
+      <div>
+        <h1>Instructions</h1>
+      </div>
+      <section class="p-container">
+        
+        <p>Welcome ! Thank you for agreeing to be part of our experiment !</p>
+        <p>Please click on the next button in order to give us some information about yourself, in order to proceed further.</p>
+        <p>Once the form is completed, the experiment will begin. You will be shown a word that you need to remember.
+          Under it, there are a number of buttons that contain words that are similar to it and only one that contains the exact same word. 
+          Your goal is to find that button and click on it as fast as you can</p>
+          <p>TODO Finish this and write it properly.</p>
+      </section>
+      <div>
+        <button class="pageButtons" id="next"> Advance</button>
+      </div>
+      
+      <div>
+      </div>
+      <script>
+        document.getElementById("next").addEventListener("click", function () {
+          fetch('/form', {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          })
+            .then((response) => {
+              console.log(response.url)
+              window.location.replace(response.url)
+            })
+        });
+      </script>
+    </main>
+    
+    <footer>
+      <%- include('./includes/footer'); %>
+    </footer>
+
+  </body>

@@ -1,0 +1,39 @@
+
+<%- include('./includes/header.ejs', {css}) %>
+  
+  <body class="container">
+   
+    <main class="content">
+      <div>
+        <h1>The End</h1>
+      </div>
+      <section class="p-container">
+        <p style="text-align: center;">Thanks for participating to our test.</p>
+        <p style="text-align: center;">You can try it again if you want.</p>
+      </section>
+
+      <div>
+        <button class="pageButtons" id="next">Try Again</button>
+      </div>
+
+      <script>
+        document.getElementById("next").addEventListener("click", function () {
+          fetch('/form', {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          })
+            .then((response) => {
+              console.log(response.url)
+              window.location.replace(response.url)
+            })
+        });
+      </script>
+    </main>
+    
+    <footer>
+      <%- include('./includes/footer'); %>
+    </footer>
+
+  </body>

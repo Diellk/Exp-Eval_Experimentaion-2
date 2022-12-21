@@ -1,0 +1,305 @@
+<%- include('./includes/header.ejs', {css}) %>
+
+    <body class="container" onload="init()">
+        <nav>
+            <p>FORZA NAPOLI</p>
+        </nav>
+        <main class="content">
+            <div class="wider">
+
+                Forza Napoli, now answer the questions!
+            </div>
+            <div id="question" class="wider">
+
+            </div>
+            <div id="timer" style="display: none;">
+
+            </div>
+            <div class="experiment" id="toChange">
+                <div class="pageButtons" id="correct">
+
+                </div>
+                <div id="buttons">
+                    <div>
+                        <button id="option1" class="gameButtons" value="1"> </button>
+                        <button id="option2" class="gameButtons" value="2"> </button>
+                    </div>
+                    <div>
+                        <button id="option3" class="gameButtons" value="3"> </button>
+                        <button id="option4" class="gameButtons" value="4"> </button>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                function init() {
+
+                    console.log("Starting experiment");
+                    //generate random number between 1 and 20
+                    let number = Math.floor(Math.random() * 14);
+                    while (visited.includes(number) && visited.length < 14) {
+                        number = Math.floor(Math.random() * 14);
+                    }
+                    visited.push(number);
+                    console.log(visited);
+
+                    //if all cases have been visited, redirect to end page
+                    if (visited.length >= 14) {
+                        console.log("All cases have been visited");
+                    }
+
+                    //update counter
+                    counter += 1;
+
+                    //update case
+                    let correct = cases[number].correct;
+                    let option1 = cases[number].option1;
+                    let option2 = cases[number].option2;
+                    let option3 = cases[number].option3;
+                    let option4 = cases[number].option4;
+                    let start = new Date().getTime();
+                    console.log(start);
+
+
+                    document.getElementById('question').innerHTML = 'Question number ' + counter + '/14';
+                    document.getElementById("correct").innerHTML = correct;
+                    document.getElementById("option1").innerHTML = option1;
+                    document.getElementById("option2").innerHTML = option2;
+                    document.getElementById("option3").innerHTML = option3;
+                    document.getElementById("option4").innerHTML = option4;
+                    document.getElementById("timer").innerHTML = start;
+
+                    addEventListeners();
+
+                }
+
+                function addEventListeners() {
+                    document.getElementById("option1").addEventListener("click", buttonAction);
+                    document.getElementById("option2").addEventListener("click", buttonAction);
+                    document.getElementById("option3").addEventListener("click", buttonAction);
+                    document.getElementById("option4").addEventListener("click", buttonAction);
+                }
+
+
+                function next() {
+                    window.location = "./form.html";
+                }
+
+                function submitter() {
+                    console.log("here");
+                    window.location = "./experiment.html";
+                }
+
+                function buttonAction() {
+
+                    //get time
+                    let stop = new Date().getTime();
+                    let oldstart = document.getElementById('timer').innerHTML;
+                    console.log(stop);
+
+                    let delta = stop - oldstart;
+                    console.log("Delta: " + delta);
+
+                    let correctAnswer = document.getElementById("correct").innerHTML;
+                    let userAnswer = this.innerHTML;
+
+                    data.push({ 'correct': correctAnswer, 'user': userAnswer, 'time': delta });
+                    console.log("Data: " + data);
+
+
+                    //generate random number between 1 and 20
+                    let number = Math.floor(Math.random() * 14);
+                    while (visited.includes(number) && visited.length < 14) {
+                        number = Math.floor(Math.random() * 14);
+                    }
+                    visited.push(number);
+                    console.log(visited);
+
+                    //if all cases have been visited, redirect to end page
+                    if (counter >= 14) {
+                        console.log("Questions are over");
+                        fetch('/end', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ data: data })
+                        })
+                            .then(response => {
+                                console.log("Response = " + response.json);
+                                response.json();
+                            })
+                            .then((data) => {
+                                console.log('Success:', data);
+                                document.getElementById("toChange").innerHTML =
+                                    `
+                                <div>
+                                    <p>Thank you and Forza Napoli!</p>
+                                    </div>
+                                <form action="/end" method="GET">
+                                    <button type="submit" class="pageButtons"> Home </button>
+                                </form>
+        
+                                `
+
+                            })
+                            .catch((error) => {
+                                console.error('Error:', error);
+                            });
+
+
+                    }
+
+                    //update counter
+                    counter += 1;
+
+                    //update case
+                    let correct = cases[number].correct;
+                    let option1 = cases[number].option1;
+                    let option2 = cases[number].option2;
+                    let option3 = cases[number].option3;
+                    let option4 = cases[number].option4;
+
+                    //get time
+                    let start = new Date().getTime();
+                    console.log(start);
+
+                    if (counter <= 14) {
+                        document.getElementById("question").innerHTML = 'Question number ' + counter + '/14';
+                    } else {
+                        document.getElementById("question").innerHTML = 'Question number 14/14';
+                    }
+                    document.getElementById('timer').innerHTML = start;
+                    document.getElementById("correct").innerHTML = correct;
+                    document.getElementById("option1").innerHTML = option1;
+                    document.getElementById("option2").innerHTML = option2;
+                    document.getElementById("option3").innerHTML = option3;
+                    document.getElementById("option4").innerHTML = option4;
+
+
+                }
+
+                let data = [];
+                let visited = [];
+                let counter = 0;
+                let cases = [
+                    //1
+                    {
+                        'correct': 'lebron james',
+                        'option1': 'lebrom-james',
+                        'option2': 'lebron-james',
+                        'option3': 'lebron-janes',
+                        'option4': 'lerbon-james',
+                    },
+                    //2
+                    {
+                        'correct': 'lebron james',
+                        'option1': 'lebromJames',
+                        'option2': 'lerbonJames',
+                        'option3': 'lebronJames',
+                        'option4': 'lebronJanes',
+                    },
+                    //3
+                    {
+                        'correct': 'forza napoli',
+                        'option1': 'forza-napoli',
+                        'option2': 'forza-naopli',
+                        'option3': 'froza-napoli',
+                        'option4': 'forza-dapoli',
+                    },
+                    //4
+                    {
+                        'correct': 'forza napoli',
+                        'option1': 'frozaNapoli',
+                        'option2': 'forzaNaopli',
+                        'option3': 'forzaNapoli',
+                        'option4': 'fordaNapoli',
+                    },
+                    //5
+                    {
+                        'correct': 'lionel messi',
+                        'option1': 'lionel-messi',
+                        'option2': 'lionel-pessi',
+                        'option3': 'loinel-messi',
+                        'option4': 'lionel-mesi',
+                    },
+                    //6
+                    {
+                        'correct': 'lionel messi',
+                        'option1': 'lionelPessi',
+                        'option2': 'loinelMessi',
+                        'option3': 'lionelMesi',
+                        'option4': 'lionelMessi',
+                    },
+                    //7
+                    {
+                        'correct': 'hello world',
+                        'option1': 'hello-wordl',
+                        'option2': 'jello-world',
+                        'option3': 'hello-world',
+                        'option4': 'hello-wprld',
+                    },
+                    //8
+                    {
+                        'correct': 'hello world',
+                        'option1': 'helloWprld',
+                        'option2': 'helloWorld',
+                        'option3': 'jelloWorld',
+                        'option4': 'helloWordl',
+                    },
+                    //9
+                    {
+                        'correct': 'information retrieval',
+                        'option1': 'information-revival',
+                        'option2': 'information-believer',
+                        'option3': 'information-retrieval',
+                        'option4': 'invocation-retrieval',
+                    },
+                    //10
+                    {
+                        'correct': 'information retrieval',
+                        'option1': 'informationRetrieval',
+                        'option2': 'informationBeliever',
+                        'option3': 'informationRevival',
+                        'option4': 'invocationRetrieval',
+                    },
+                    //11
+                    {
+                        'correct': 'computer science',
+                        'option1': 'computer-sciance',
+                        'option2': 'conputer-science',
+                        'option3': 'computer-science',
+                        'option4': 'computer-sciemce',
+                    },
+                    //12
+                    {
+                        'correct': 'computer science',
+                        'option1': 'conputerScience',
+                        'option2': 'computerSciemce',
+                        'option3': 'computerScience',
+                        'option4': 'computerSciance',
+                    },
+                    //13
+                    {
+                        'correct': 'java script',
+                        'option1': 'jawa-script',
+                        'option2': 'java-scirpt',
+                        'option3': 'java-script',
+                        'option4': 'jawa-scurpt',
+                    },
+                    //14
+                    {
+                        'correct': 'java script',
+                        'option1': 'javaScript',
+                        'option2': 'jawaScript',
+                        'option3': 'javaScurpt',
+                        'option4': 'javaScirpt',
+                    },
+
+                ]
+
+            </script>
+        </main>
+
+
+    </body>

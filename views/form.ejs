@@ -1,0 +1,61 @@
+<% %>
+
+  <%- include('./includes/header.ejs', {css}) %>
+
+    <nav>
+      <p>
+        FORZA NAPOLI
+      </p>
+    </nav>
+
+    <body class="container">
+
+      <main class="content">
+        <form action="/start" method="GET">
+          <div>
+            <label class="text" for="name">Your Name</label>
+            <input class="pageButtons" id="name" name="name" rows="1" cols="20" placeholder="Name" required></input>
+          </div>
+
+          <div>
+            <p class="text">Gender:</p>
+            <select class="pageButtons" name="gender" id="gender" required>
+              <option value="">Select</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+              <option value="neapolitan">Neapolitan</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="age" class="text">Your age:</label>
+            <input class="pageButtons" type="number" id="age" name="age" min="0" max="100" required>
+          </div>
+
+          <div>
+            <label for="confidence" class="text">Confidence with either cases</label>
+            <select class="text" name="confidence" id="confidence">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+
+          <div id="submit">
+            <button class="pageButtons">Submit</button>
+          </div>
+
+        </form>
+
+
+
+      </main>
+
+      <footer>
+        <%- include('./includes/footer'); %>
+      </footer>
+
+    </body>
