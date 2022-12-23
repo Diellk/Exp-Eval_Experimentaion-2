@@ -1,25 +1,15 @@
-Maria Rosaria,57,1,,,
-Alessia,19,1,,,
-Domenico,29,3,,,
-Angelo,21,2,,,
-Angelo,61,1,,,
-Alessandro Cagnani,21,4,,,
-Alan Copa,20,3,,,
-Albert Cerfeda,21,5,,,
-Michele Cattaneo,23,5,,,
-Andrea Gualandris,22,4,,,
 Alessandro Artusa,21,3,,,
-,,,java script,correct,1751ms
-,,,information retrieval,correct,1677ms
-,,,information retrieval,wrong,1151ms
-,,,computer science,correct,1178ms
-,,,lebron james,correct,1680ms
-,,,hello world,correct,2164ms
-,,,lionel messi,correct,980ms
-,,,forza napoli,wrong,1079ms
-,,,forza napoli,correct,1312ms
-,,,computer science,correct,1870ms
-,,,java script,correct,1197ms
-,,,lionel messi,correct,2143ms
-,,,lebron james,correct,792ms
-,,,hello world,correct,1121ms
+,,,java script,correct,1751ms,kebab
+,,,information retrieval,correct,1677ms,kebab
+,,,information retrieval,wrong,1151ms,camel
+,,,computer science,correct,1178ms,kebab
+,,,lebron james,correct,1680ms,kebab
+,,,hello world,correct,2164ms,kebab
+,,,lionel messi,correct,980ms,camel
+,,,forza napoli,wrong,1079ms,kebab
+,,,forza napoli,correct,1312ms,camel
+,,,computer science,correct,1870ms,camel
+,,,java script,correct,1197ms,camel
+,,,lionel messi,correct,2143ms,kebab
+,,,lebron james,correct,792ms,camel
+,,,hello world,correct,1121ms,camel

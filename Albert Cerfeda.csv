@@ -1,22 +1,15 @@
-Maria Rosaria,57,1,,,
-Alessia,19,1,,,
-Domenico,29,3,,,
-Angelo,21,2,,,
-Angelo,61,1,,,
-Alessandro Cagnani,21,4,,,
-Alan Copa,20,3,,,
 Albert Cerfeda,21,5,,,
-,,,forza napoli,correct,2156ms
-,,,lebron james,correct,2104ms
-,,,lebron james,correct,1236ms
-,,,computer science,correct,1133ms
-,,,lionel messi,correct,1288ms
-,,,hello world,correct,1806ms
+,,,forza napoli,correct,2156ms,camel
+,,,lebron james,correct,2104ms,camel
+,,,lebron james,correct,1236ms,kebab
+,,,computer science,correct,1133ms,camel
+,,,lionel messi,correct,1288ms,kebab
+,,,hello world,correct,1806ms,camel
 ,,,information retrieval,correct,2016ms
-,,,computer science,correct,1289ms
-,,,java script,correct,1294ms
+,,,computer science,correct,1289ms,kebab
+,,,java script,correct,1294ms,kebab
 ,,,information retrieval,correct,2194ms
-,,,java script,wrong,1351ms
-,,,lionel messi,correct,1390ms
-,,,hello world,correct,1108ms
-,,,forza napoli,correct,2641ms
+,,,java script,wrong,1351ms,camel
+,,,lionel messi,correct,1390ms,camel
+,,,hello world,correct,1108ms,kebab
+,,,forza napoli,correct,2641ms,kebab

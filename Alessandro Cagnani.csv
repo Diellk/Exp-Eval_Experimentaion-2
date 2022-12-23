@@ -1,20 +1,15 @@
-Maria Rosaria,57,1,,,
-Alessia,19,1,,,
-Domenico,29,3,,,
-Angelo,21,2,,,
-Angelo,61,1,,,
 Alessandro Cagnani,21,4,,,
-,,,java script,correct,3967ms
-,,,forza napoli,correct,1031ms
-,,,information retrieval,correct,2626ms
-,,,hello world,wrong,1982ms
-,,,hello world,correct,1173ms
-,,,lebron james,wrong,1527ms
-,,,computer science,wrong,1807ms
-,,,forza napoli,correct,1667ms
-,,,lionel messi,correct,1245ms
-,,,computer science,correct,1103ms
-,,,information retrieval,correct,1341ms
-,,,java script,correct,2773ms
-,,,lebron james,correct,1418ms
-,,,lionel messi,correct,1507ms
+,,,java script,correct,3967ms,kebab
+,,,forza napoli,correct,1031ms,camel
+,,,information retrieval,correct,2626ms,camel
+,,,hello world,wrong,1982ms,camel
+,,,hello world,correct,1173ms,kebab
+,,,lebron james,wrong,1527ms,camel
+,,,computer science,wrong,1807ms,kebab
+,,,forza napoli,correct,1667ms,kebab
+,,,lionel messi,correct,1245ms,camel
+,,,computer science,correct,1103ms,camel
+,,,information retrieval,correct,1341ms,kebab
+,,,java script,correct,2773ms,camel
+,,,lebron james,correct,1418ms,kebab
+,,,lionel messi,correct,1507ms,kebab
