@@ -13,7 +13,7 @@ const csvWriter = createCSVWriter({
     header: [
         { id: 'name', title: 'Name' },
         { id: 'age', title: 'Age' },
-        { id: 'confidence', title: 'Confidence' },
+        { id: 'familiarity', title: 'Familiarity' },
         { id: 'correct', title: 'Correct' },
         { id: 'answer', title: 'Answer' },
         { id: 'time', title: 'Time' },
@@ -70,7 +70,7 @@ app.get('/start', function (req, res) {
     let person = {
         name: req.query.name,
         age: req.query.age,
-        confidence: req.query.confidence,
+        familiarity: req.query.familiarity,
     }
     data.push(person);
 
